@@ -113,7 +113,7 @@ The best values of the hyperparameters are:
 
 N_estimators: 49 
 
-![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/4.png)
+ ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/4.png)
 
 ## 4) Decision Tree classifier
 Same to the previous models, we first imported our model and then trained it on our data and finally made predictions. ​
