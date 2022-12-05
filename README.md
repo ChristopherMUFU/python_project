@@ -150,6 +150,6 @@ min_samples_split: 2
 
  To compare the different models, we have ploted the accuracy of this model in the same graph.         ​
 
-       According to the graph, the best model is the random Forest classifier with the highest precision of 63.64.
+According to the graph, the best model is the random Forest classifier with the highest precision of 63.64.
        
-       ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/7.png)
+ ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/7.png)
