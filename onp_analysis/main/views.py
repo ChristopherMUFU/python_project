@@ -1,9 +1,14 @@
 import numpy as np
 import pandas as pd
+import os
 from .apps import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from sklearn.preprocessing import StandardScaler, RobustScaler
+from django.conf import settings
+
+data = os.path.join(settings.DATA, "data_onp.csv")
+df = pd.read_csv(data).drop("Unnamed: 0", axis=1)
 
 variables = [
             'n_tokens_title', 
@@ -20,20 +25,23 @@ variables = [
         ]
 
 def variables_post_config(data, variables):
-    return [[data[x] for x in variables]]
+    return [data[x] for x in variables]
 
-def to_scale(X, scaler):
-    return scaler.fit_transform(X)
+def to_scale(X, scaler, df):
+    sample_ml = df
+    sample_ml.append(X)
+    res = scaler.fit_transform(sample_ml)
+    return [res[-1]]
 
 class Prediction(APIView):
     def post(self, request):
         data = request.data
         X = variables_post_config(data, variables)
-        X_scaled = to_scale(X, RobustScaler())
+        print(X)
+        X_scaled = to_scale(X, RobustScaler(), df.values.tolist())
         print(X_scaled)
         rd_forest_clf = ApiConfig.model
-        #predict using independent variables
-        PredictionMade = rd_forest_clf.predict(X_scaled)
-        response_dict = {"Predicted popularity": PredictionMade}
+        prediction_made = rd_forest_clf.predict(X_scaled)
+        response_dict = {"Predicted popularity": prediction_made}
         print(response_dict)
         return Response(response_dict, status=200)

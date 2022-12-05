@@ -82,6 +82,7 @@ DATABASES = {
 }
 
 MODELS = os.path.join(BASE_DIR, 'ml/models')
+DATA = os.path.join(BASE_DIR, 'ml/data')
 
 
 # Password validation
