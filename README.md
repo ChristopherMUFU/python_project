@@ -216,3 +216,8 @@ min_samples_split: 2
 According to the graph, the best model is the random Forest classifier with the highest precision of 63.64.
        
  ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/7.png)
+
+
+
+
+For more informations, you can find the notebok book in this link (https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
