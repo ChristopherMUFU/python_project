@@ -20,17 +20,80 @@ In order to process your data properly, we have made some step.
  
  We removing rows with null values 
  
+ ```python
+# Remove spaces in columns
+df.columns = [x.replace(" ", "") for x in list(df.columns)]
+df.columns 
+```
+```
+# find number of rows that contain 0 for n_tokens_content
+num_of_nowords=df[df['n_tokens_content']==0].index
+print('Number of news with no words',num_of_nowords.size)
+
+
+# Drop these items or rows with n_tokens_content = 0
+df = df[df['n_tokens_content'] != 0]
+```
+ 
  ## 4) Removing columns
  We remove useless columns or columns with highly correlations
  
+ ```
+ # Here we drop the two non-preditive (url and timedelta) attributes. They won't contribute anything
+df.drop(columns=['url','timedelta'], axis=1, inplace=True)
+df.head()
+```
+```
+# we find some of the features which are highly correlated that means which are some what linearly dependent with other features. These features contribute very less in predicting the output but increses the computational cost.
+cor_matrix = df.corr().abs()
+
+
+# Note that Correlation matrix will be mirror image about the diagonal and all the diagonal elements will be 1. 
+# So, It does not matter that we select the upper triangular or lower triangular part of the correlation matrix but we should not include the diagonal elements. 
+# So we are selecting the upper traingular.
+upper_tri = cor_matrix.where(np.triu(np.ones(cor_matrix.shape),k=1).astype(np.bool))
+```
  ## 5) Transformation of columns
  
- We noticed that some columns contains same informations. We merge theses columns to obtain a cleaner dataset.
+ We noticed that some columns contains same informations. We merge theses columns to obtain a cleaner dataset. For example, we merge the columns weekday_is_monday, weekday_is_tuesday and the other columns of weekdays_is_...
+ 
+ ```
+ publishdayMerge=df[['weekday_is_monday','weekday_is_tuesday','weekday_is_wednesday', 
+                      'weekday_is_thursday', 'weekday_is_friday','weekday_is_saturday' ,'weekday_is_sunday' ]]
+publish_arr=[]
+for r in list(range(publishdayMerge.shape[0])):
+    for c in list(range(publishdayMerge.shape[1])):
+        if ((c==0) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Monday')
+        elif ((c==1) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Tueday')
+        elif ((c==2) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Wednesday')
+        elif ((c==3) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Thursday')
+        elif ((c==4) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Friday')
+        elif ((c==5) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Saturday') 
+        elif ((c==6) and (publishdayMerge.iloc[r,c])==1):
+            publish_arr.append('Sunday')      
+ ```
  
  ## 6) Study a target variables
  
  To know what we must predict, we have to determinate the target variable of our dataset. Here, our target variable is the shares columns which was an interger column. In order to make it more accurate, we divide it in two category (popular ans unpopular).
  
+```
+# We have decided to use quartiles to determine our category criteria :
+
+share_label = list()
+for shares in df['shares'] :
+    
+    if shares <= 1400: # <25% 
+        share_label.append('Unpopular')
+    else: # <50%
+        share_label.append('Popular')
+```
 
 # Data Exploratory Analysis
 
