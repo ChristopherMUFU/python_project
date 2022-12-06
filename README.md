@@ -263,7 +263,7 @@ Process :
 sample_for_api.to_csv('data_onp.csv')
 ```
 
-[ data_onp.csv ](https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
+[ data_onp.csv ](https://github.com/ChristopherMUFU/python_project/tree/master/onp_analysis/ml/data/data_onp.csv)
 ```
 # Save our predictive model on a pkl file 
 import joblib
