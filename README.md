@@ -254,15 +254,22 @@ According to the graph, the best model is the random Forest classifier with the 
  ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/7.png)
 
 ## 6) Configuration of our best model for API tranformation
+
 Process :
+
 - Registration of the best model and the prediction sample
+```
 # Save our optimized dataset on csv file
 sample_for_api.to_csv('data_onp.csv')
-[ data_onp.csv ](https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
+```
 
+[ data_onp.csv ](https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
+```
 # Save our predictive model on a pkl file 
 import joblib
 joblib.dump(clf, 'rd_forest_clf.pkl.pkl')
+```
+
 [ rd_forest_clf.pkl.pkl ](https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
 
 - Creation of the input of the API request
@@ -275,6 +282,7 @@ joblib.dump(clf, 'rd_forest_clf.pkl.pkl')
 {'Predicted popularity': array([res], dtype=int32)}
 ```
 - Result
+
 ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/12.png)
 
 For more informations, you can find the notebok book in this link (https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
