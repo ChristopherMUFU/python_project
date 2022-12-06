@@ -102,16 +102,17 @@ for shares in df['shares'] :
 
 ## 1) Global analysis of the dataset
 
-We have studied two categorical variables : weekdays and data_channel
+We have studied two categorical variables : weekdays and data_channel.
 
 
 
 
 ## 2) Analysis of important variables
-
+We did a rank of importance of variables compared to Shares. And we will use only top 15 in our study.
 
 
 ## 3) Remove outliers
+We have many outliers, so in order to better visualize the variables explicatives, we have removed these outliers.
 
 
 ## 4) Univariate analysis of quantitative important variables
