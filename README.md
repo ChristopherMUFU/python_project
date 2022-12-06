@@ -270,7 +270,7 @@ import joblib
 joblib.dump(clf, 'rd_forest_clf.pkl.pkl')
 ```
 
-[ rd_forest_clf.pkl.pkl ](https://github.com/ChristopherMUFU/python_project/blob/master/OnlineNewsPopularity.csv)
+[ rd_forest_clf.pkl.pkl ](https://github.com/ChristopherMUFU/python_project/blob/master/onp_analysis/ml/models/rd_forest_clf.pkl.pkl)
 
 - Creation of the input of the API request
 ```
