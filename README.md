@@ -285,4 +285,4 @@ joblib.dump(clf, 'rd_forest_clf.pkl.pkl')
 
 ![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/12.png)
 
-For more informations, you can find the notebok book in this link ([https://github.com/ChristopherMUFU/python_project/blob/master/Projet_Final_Python.ipynb])
+For more informations, you can find the notebok book in this link (https://github.com/ChristopherMUFU/python_project/blob/master/Projet_Final_Python.ipynb)
