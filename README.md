@@ -7,6 +7,8 @@ Our goal was to predict if an article is popular or unpopular using machine lear
 
 For that, we must prepare the data before using it.
 
+## Study problem : How to predict the popularity of articles ?
+
 In order to process your data properly, we have made some step.
  ## 1) Extract dataset
  
@@ -97,13 +99,47 @@ for shares in df['shares'] :
 
 # Data Exploratory Analysis
 
+
 ## 1) Global analysis of the dataset
 
+In order to get a better understading of our dataset to solve our problematic, we proceeded to a global study including an analysis of our categorical attributes as well as an illustration of the correlations between them.
+
+![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/8.png)
+![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/9.png)
+
+Main analysis :
+- Understanding of the distribution of articles according to the day of the week and the topic.
+- No linear correlation between target share and other numerical attributes.
+
+
 ## 2) Analysis of important variables
+To optimize the design of our model and reduce the possibilities of overfitting, we have started a ranking of the most important variables in the influence of the target share prediction.
+
+![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/10.png)
+
+Main analysis :
+- Selection of the attributes that will compose the sample for predicting the popularity of an article.
+
 
 ## 3) Remove outliers
+We have many outliers, so in order to better visualize the variables explicatives, we have removed these outliers.
+ ```python
+ # Check outliers using Interquartile Range (IQR)
+Q1 = df[impfeats].quantile(0.25)
+Q3 = df[impfeats].quantile(0.75)
+IQR = Q3 - Q1
+ df2 = df[~((df[impfeats] < (Q1 - 1.5 * IQR)) |(df[impfeats] > (Q3 + 1.5 * IQR))).any(axis=1)]
+  ```
 
 ## 4) Univariate analysis of quantitative important variables
+After having identified the important attributes, we proceed to their analysis in a univariate way in order to obtain all the knowledge necessary to build our predictive model.
+
+![image](https://github.com/ChristopherMUFU/python_project/blob/master/images/11.png)
+
+Main analysis :
+Observation of the difference between the important attributes with and without outliers.
+
+
 
 
 # Data Modeling
