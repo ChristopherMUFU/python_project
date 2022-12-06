@@ -7,6 +7,8 @@ Our goal was to predict if an article is popular or unpopular using machine lear
 
 For that, we must prepare the data before using it.
 
+## Study problem : How to predict the popularity of articles ?
+
 In order to process your data properly, we have made some step.
  ## 1) Extract dataset
  
@@ -97,13 +99,28 @@ for shares in df['shares'] :
 
 # Data Exploratory Analysis
 
+```
+
 ## 1) Global analysis of the dataset
+
+We have studied two categorical variables : weekdays and data_channel
+
+
+
+```
+
 
 ## 2) Analysis of important variables
 
+```
+
 ## 3) Remove outliers
 
+```
+
 ## 4) Univariate analysis of quantitative important variables
+
+```
 
 
 # Data Modeling
